@@ -3,6 +3,7 @@ let h1 = document.querySelector("h1");
 let btn = document.querySelector(".btn");
 let body = document.querySelector(".container");
 let line = document.querySelector(".line");
+const time = document.querySelector(".time");
 
 let win = [
   [0, 1, 2, -7.2, 0, 90],
@@ -63,3 +64,16 @@ const checkWinner = () => {
     }
   }
 };
+setInterval(() => {
+  let date = new Date();
+  let timing = "PM";
+  let hour = date.getHours();
+  if (hour < 10) hour = "0" + hour;
+  if (hour < 12) timing = "AM";
+  let minit = date.getMinutes();
+  if (minit < 10) minit = "0" + minit;
+  let secs = date.getSeconds();
+  if (secs < 10) secs = "0" + secs;
+  let currentTime = hour + ":" + minit + ":" + secs + " " + timing;
+  time.innerText = currentTime;
+}, 1000);
